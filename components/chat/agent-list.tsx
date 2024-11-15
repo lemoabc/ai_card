@@ -1,6 +1,6 @@
-import { Brain, Code, Pen, ChartBar, Calculator, Camera, FileText, Globe, Laptop, 
+import { Brain, Code, Pen, Calculator, Camera, FileText, Globe, Laptop, 
   LayoutDashboard, MessageSquare, Microscope, Music, Palette, School, Search, 
-  ShieldCheck, Stethoscope, Terminal, TestTube, Translate, TrendingUp, Variable, 
+  ShieldCheck, Stethoscope, Terminal, TestTube, TrendingUp, Variable, 
   Wand2, Bot, Blocks } from "lucide-react";
 import { LucideIcon } from "lucide-react";
 
@@ -111,7 +111,7 @@ export const agents: Agent[] = [
   {
     id: 12,
     name: "数据分析师",
-    icon: ChartBar,
+    icon: LayoutDashboard,
     description: "数据分析和可视化",
     category: "analysis",
     tags: ["分析", "统计"]
