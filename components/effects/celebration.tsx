@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 import confetti from 'canvas-confetti';
 
-// 将类型声明移到接口定义之前
+// 修改类型声明
 declare module 'canvas-confetti' {
   interface Options {
     particleCount?: number;
@@ -27,14 +27,16 @@ declare module 'canvas-confetti' {
 
   interface ConfettiFunction {
     (options?: Options): Promise<null>;
-    create: (canvas: HTMLCanvasElement, options?: { resize?: boolean; useWorker?: boolean }) => (options?: Options) => void;
+    create(canvas: HTMLCanvasElement, options?: { resize?: boolean; useWorker?: boolean }): (options?: Options) => void;
   }
-
-  const confetti: ConfettiFunction;
-  export default confetti;
 }
 
-// 然后再定义组件接口
+// 为导入的 confetti 添加类型
+const confettiWithTypes = confetti as unknown as {
+  (options?: confetti.Options): Promise<null>;
+  create(canvas: HTMLCanvasElement, options?: { resize?: boolean; useWorker?: boolean }): (options?: confetti.Options) => void;
+};
+
 interface CelebrationProps {
   isVisible: boolean;
   type: 'fireworks' | 'confetti';
@@ -81,8 +83,8 @@ export function Celebration({ isVisible, type, onComplete }: CelebrationProps) {
     document.body.appendChild(canvas);
     canvasRef.current = canvas;
 
-    // 创建 confetti 实例
-    const myConfetti = confetti.create(canvas, {
+    // 创建 confetti 实例，使用类型转换后的 confetti
+    const myConfetti = confettiWithTypes.create(canvas, {
       resize: true,
       useWorker: true
     });
