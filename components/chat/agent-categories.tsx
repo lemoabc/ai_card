@@ -1,4 +1,4 @@
-import { Brain, Code, Palette, ChartBar, School, TrendingUp, Microscope } from "lucide-react";
+import { Brain, Code, Palette, BarChart3, School, TrendingUp, Microscope } from "lucide-react";
 
 export const categories = {
   general: {
@@ -19,7 +19,7 @@ export const categories = {
   analysis: {
     name: "数据分析",
     description: "数据处理和分析",
-    icon: ChartBar
+    icon: BarChart3
   },
   education: {
     name: "教育学习",

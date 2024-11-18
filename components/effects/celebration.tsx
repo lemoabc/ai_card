@@ -3,6 +3,38 @@
 import { useEffect, useRef } from 'react';
 import confetti from 'canvas-confetti';
 
+// 将类型声明移到接口定义之前
+declare module 'canvas-confetti' {
+  interface Options {
+    particleCount?: number;
+    angle?: number;
+    spread?: number;
+    startVelocity?: number;
+    decay?: number;
+    gravity?: number;
+    drift?: number;
+    ticks?: number;
+    origin?: {
+      x?: number;
+      y?: number;
+    };
+    colors?: string[];
+    shapes?: string[];
+    scalar?: number;
+    zIndex?: number;
+    disableForReducedMotion?: boolean;
+  }
+
+  interface ConfettiFunction {
+    (options?: Options): Promise<null>;
+    create: (canvas: HTMLCanvasElement, options?: { resize?: boolean; useWorker?: boolean }) => (options?: Options) => void;
+  }
+
+  const confetti: ConfettiFunction;
+  export default confetti;
+}
+
+// 然后再定义组件接口
 interface CelebrationProps {
   isVisible: boolean;
   type: 'fireworks' | 'confetti';
