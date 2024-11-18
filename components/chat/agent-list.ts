@@ -14,7 +14,7 @@ import {
   Palette,
   Music,
   Camera,
-  ChartBar,
+  BarChart3,
   LayoutDashboard,
   TrendingUp,
   School,
@@ -155,7 +155,7 @@ export const agents: Agent[] = [
   {
     id: 12,
     name: "数据分析师",
-    icon: ChartBar,
+    icon: BarChart3,
     description: "数据分析和可视化",
     category: "analysis",
     tags: ["分析", "统计"]

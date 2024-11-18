@@ -7,7 +7,7 @@ import {
   Brain,
   Code,
   Palette,
-  ChartBar,
+  BarChart3,
   School,
   TrendingUp,
   Microscope
@@ -53,7 +53,7 @@ export const categories: Record<string, Category> = {
   analysis: {
     name: "数据分析",
     description: "数据处理和分析",
-    icon: ChartBar
+    icon: BarChart3
   },
   // 教育学习类别：提供学习辅导服务
   education: {

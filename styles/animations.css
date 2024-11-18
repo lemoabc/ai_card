@@ -8,7 +8,7 @@
   height: 4px;
   background: #ff335f;
   border-radius: 50%;
-  animation: shoot 1.5s ease-out forwards;
+  animation: shoot 1s ease-out forwards;
 }
 
 .firework::before,
@@ -19,7 +19,7 @@
   height: 100%;
   border-radius: 50%;
   background: inherit;
-  animation: explosion 1s ease-out 0.6s forwards;
+  animation: explosion 0.8s ease-out 0.4s forwards;
 }
 
 /* 礼炮动画 */
@@ -62,7 +62,7 @@
     opacity: 1;
   }
   100% {
-    transform: scale(30);
+    transform: scale(20);
     opacity: 0;
   }
 }

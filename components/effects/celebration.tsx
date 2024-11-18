@@ -57,17 +57,17 @@ export function Celebration({ isVisible, type, onComplete }: CelebrationProps) {
 
     // 根据类型执行不同的动画
     if (type === 'fireworks') {
-      const duration = 3000;
+      const duration = 2000;
       const animationEnd = Date.now() + duration;
       const defaults = {
-        particleCount: 150,
-        spread: 360,
-        startVelocity: 60,
-        ticks: 300,
+        particleCount: 50,
+        spread: 180,
+        startVelocity: 45,
+        ticks: 200,
         zIndex: 9999999,
         shapes: ['star', 'circle'],
         colors: ['#ff0000', '#ffa500', '#ffff00', '#00ff00', '#0000ff', '#4b0082', '#ee82ee'],
-        scalar: 2.5,
+        scalar: 1.5,
         disableForReducedMotion: true
       };
 
@@ -79,26 +79,15 @@ export function Celebration({ isVisible, type, onComplete }: CelebrationProps) {
           return;
         }
 
-        // 从底部发射
+        // 只从底部中心发射
         myConfetti({
           ...defaults,
           origin: { x: 0.5, y: 1 },
-          gravity: 1.5
+          gravity: 1.2
         });
 
-        // 从两侧发射
-        myConfetti({
-          ...defaults,
-          origin: { x: 0.2, y: 1 },
-          angle: 60
-        });
-
-        myConfetti({
-          ...defaults,
-          origin: { x: 0.8, y: 1 },
-          angle: 120
-        });
-      }, 100);
+        // 减少发射频率
+      }, 200);
 
       return () => {
         clearInterval(interval);
@@ -111,43 +100,43 @@ export function Celebration({ isVisible, type, onComplete }: CelebrationProps) {
     } else {
       // 礼炮效果
       const defaults = {
-        particleCount: 200,
-        spread: 100,
-        startVelocity: 45,
-        gravity: 1.2,
-        ticks: 500,
+        particleCount: 80,
+        spread: 60,
+        startVelocity: 35,
+        gravity: 1,
+        ticks: 300,
         zIndex: 9999999,
         colors: ['#ff0000', '#ffa500', '#ffff00', '#00ff00', '#0000ff', '#4b0082', '#ee82ee'],
         shapes: ['square', 'circle'],
-        scalar: 1.2,
+        scalar: 0.8,
         disableForReducedMotion: true
       };
 
       // 从左右两侧发射
       myConfetti({
         ...defaults,
-        origin: { x: 0, y: 0.9 },
+        origin: { x: 0.2, y: 0.9 },
         angle: 60
       });
 
       myConfetti({
         ...defaults,
-        origin: { x: 1, y: 0.9 },
+        origin: { x: 0.8, y: 0.9 },
         angle: 120
       });
 
-      // 中央爆发
+      // 中央爆发效果也减弱
       setTimeout(() => {
         myConfetti({
           ...defaults,
           origin: { x: 0.5, y: 0.5 },
-          spread: 360,
-          startVelocity: 50,
-          scalar: 1.5
+          spread: 180,
+          startVelocity: 35,
+          scalar: 1
         });
 
-        setTimeout(onComplete, 1000);
-      }, 250);
+        setTimeout(onComplete, 800);
+      }, 200);
 
       return () => {
         if (canvasRef.current) {
