@@ -5,6 +5,8 @@ import confetti from 'canvas-confetti';
 
 // 修改类型声明
 declare module 'canvas-confetti' {
+  type Shape = 'square' | 'circle' | 'star';
+
   interface Options {
     particleCount?: number;
     angle?: number;
@@ -19,7 +21,7 @@ declare module 'canvas-confetti' {
       y?: number;
     };
     colors?: string[];
-    shapes?: string[];
+    shapes?: Shape[];
     scalar?: number;
     zIndex?: number;
     disableForReducedMotion?: boolean;
@@ -99,7 +101,7 @@ export function Celebration({ isVisible, type, onComplete }: CelebrationProps) {
         startVelocity: 45,
         ticks: 200,
         zIndex: 9999999,
-        shapes: ['star', 'circle'],
+        shapes: ['star', 'circle'] as ('star' | 'circle')[],
         colors: ['#ff0000', '#ffa500', '#ffff00', '#00ff00', '#0000ff', '#4b0082', '#ee82ee'],
         scalar: 1.5,
         disableForReducedMotion: true
@@ -141,7 +143,7 @@ export function Celebration({ isVisible, type, onComplete }: CelebrationProps) {
         ticks: 300,
         zIndex: 9999999,
         colors: ['#ff0000', '#ffa500', '#ffff00', '#00ff00', '#0000ff', '#4b0082', '#ee82ee'],
-        shapes: ['square', 'circle'],
+        shapes: ['square', 'circle'] as ('square' | 'circle')[],
         scalar: 0.8,
         disableForReducedMotion: true
       };
